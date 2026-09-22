@@ -1,0 +1,2938 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-vazirmatn);
+  --font-mono: var(--font-jetbrains);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-teal: var(--teal);
+  --color-teal-foreground: var(--teal-foreground);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ============ پالت پایه = تم پرچمدار «بنفشهٔ سلطنتی» (پیش‌فرض — روان‌شناسی‌شده)
+   بنفش = نماد تیزبینی، خرد و خلاقیت (معنای «هوش»)؛ فوشیا = جرقهٔ انرژی و خلاقیت.
+   پس‌زمینهٔ ته‌رنگ‌دار بنفش، خستگی چشم را در کار طولانی کاهش می‌دهد.
+   هر ۱۴ تم با [data-theme="..."] بازنویسی می‌شوند (پایین‌تر) ============ */
+
+:root {
+  --radius: 0.75rem; /* 12px گوشه‌های گرد */
+  --background: #fbfafe;
+  --foreground: #14101f;
+  --card: #ffffff;
+  --card-foreground: #14101f;
+  --popover: #ffffff;
+  --popover-foreground: #14101f;
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+  --primary-deep: #5b21b6;
+  --secondary: #f3f1fa;
+  --secondary-foreground: #201a33;
+  --muted: #f5f4fa;
+  --muted-foreground: #6d6a7e;
+  --accent: #f1edfd;
+  --accent-foreground: #4c1d95;
+  --teal: #c026d3;
+  --teal-foreground: #ffffff;
+  --border: #e7e3f4;
+  --input: #e7e3f4;
+  --ring: #7c3aed;
+  --chart-1: #7c3aed;
+  --chart-2: #c026d3;
+  --chart-3: #0891b2;
+  --chart-4: #d97706;
+  --chart-5: #059669;
+  --sidebar: #f8f6fd;
+  --sidebar-foreground: #1e1833;
+  --sidebar-primary: #7c3aed;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f1edfd;
+  --sidebar-accent-foreground: #4c1d95;
+  --sidebar-border: #e4def4;
+  --sidebar-ring: #7c3aed;
+  --swatch-1: #8b5cf6;
+  --swatch-2: #a855f7;
+  --swatch-3: #d946ef;
+  --glow: #a855f7;
+  --destructive: #ef4444; /* Danger */
+  --success: #10b981;
+  --success-foreground: #ffffff;
+  --warning: #f59e0b;
+  --warning-foreground: #ffffff;
+  --info: #0891b2;
+  --info-foreground: #ffffff;
+  --text-muted: #9ca3af;
+}
+
+.dark {
+  --background: #0b0813;
+  --foreground: #f4f2fb;
+  --card: #131020;
+  --card-foreground: #f4f2fb;
+  --popover: #131020;
+  --popover-foreground: #f4f2fb;
+  --primary: #a78bfa;
+  --primary-foreground: #1d1442;
+  --primary-deep: #8b5cf6;
+  --secondary: #1b1729;
+  --secondary-foreground: #e4e1f0;
+  --muted: #171422;
+  --muted-foreground: #a5a0bc;
+  --accent: #2a1d55;
+  --accent-foreground: #c4b5fd;
+  --teal: #e879f9;
+  --teal-foreground: #26102b;
+  --border: #272238;
+  --input: #272238;
+  --ring: #a78bfa;
+  --chart-1: #a78bfa;
+  --chart-2: #e879f9;
+  --chart-3: #22d3ee;
+  --chart-4: #fbbf24;
+  --chart-5: #34d399;
+  --sidebar: #0e0b19;
+  --sidebar-foreground: #f4f2fb;
+  --sidebar-primary: #a78bfa;
+  --sidebar-primary-foreground: #1d1442;
+  --sidebar-accent: #241a47;
+  --sidebar-accent-foreground: #c4b5fd;
+  --sidebar-border: #2c2450;
+  --sidebar-ring: #a78bfa;
+  --swatch-1: #8b5cf6;
+  --swatch-2: #a855f7;
+  --swatch-3: #d946ef;
+  --glow: #c084fc;
+  --destructive: #f87171;
+  --success: #34d399;
+  --success-foreground: #06281c;
+  --warning: #fbbf24;
+  --warning-foreground: #261903;
+  --info: #22d3ee;
+  --info-foreground: #062a33;
+  --text-muted: #71717a;
+}
+
+/* ============ ۱۴ تم ظاهری خیره‌کنندهٔ هوش — پالت کامل (۳۳ متغیر × روشن/تاریک)
+   سازوکار: <html data-theme="id"> + class="dark" (next-themes).
+   هر تم «کل» برنامه را دگرگون می‌کند: پس‌زمینهٔ ته‌رنگ‌دار، کارت‌ها، سایدبار،
+   نمودارها، دکمه‌ها و رینگ فوکوس. متغیرهای --swatch-1/2/3 و --glow مخصوصِ
+   پیش‌نمایش زندهٔ کارت‌ها در انتخابگر تم‌اند.
+   ترتیب تخصص: [data-theme] پس از :root (تخصص برابر، ترتیب بالا‌تر) و
+   .dark[data-theme] با تخصص ۰-۲-۰ بر .dark غلبه می‌کند.
+   همهٔ جفت‌های متن/پس‌زمینه WCAG AA (>= 4.5:1) را پاس می‌کنند. ============ */
+
+/* ---- بنفشهٔ سلطنتی (violet) ---- */
+
+[data-theme="violet"] { /* بنفشهٔ سلطنتی — روشن */
+  --background: #fbfafe;
+  --foreground: #14101f;
+  --card: #ffffff;
+  --card-foreground: #14101f;
+  --popover: #ffffff;
+  --popover-foreground: #14101f;
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+  --primary-deep: #5b21b6;
+  --secondary: #f3f1fa;
+  --secondary-foreground: #201a33;
+  --muted: #f5f4fa;
+  --muted-foreground: #6d6a7e;
+  --accent: #f1edfd;
+  --accent-foreground: #4c1d95;
+  --teal: #c026d3;
+  --teal-foreground: #ffffff;
+  --border: #e7e3f4;
+  --input: #e7e3f4;
+  --ring: #7c3aed;
+  --chart-1: #7c3aed;
+  --chart-2: #c026d3;
+  --chart-3: #0891b2;
+  --chart-4: #d97706;
+  --chart-5: #059669;
+  --sidebar: #f8f6fd;
+  --sidebar-foreground: #1e1833;
+  --sidebar-primary: #7c3aed;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f1edfd;
+  --sidebar-accent-foreground: #4c1d95;
+  --sidebar-border: #e4def4;
+  --sidebar-ring: #7c3aed;
+  --swatch-1: #8b5cf6;
+  --swatch-2: #a855f7;
+  --swatch-3: #d946ef;
+  --glow: #a855f7;
+}
+
+.dark[data-theme="violet"] { /* بنفشهٔ سلطنتی — تاریک */
+  --background: #0b0813;
+  --foreground: #f4f2fb;
+  --card: #131020;
+  --card-foreground: #f4f2fb;
+  --popover: #131020;
+  --popover-foreground: #f4f2fb;
+  --primary: #a78bfa;
+  --primary-foreground: #1d1442;
+  --primary-deep: #8b5cf6;
+  --secondary: #1b1729;
+  --secondary-foreground: #e4e1f0;
+  --muted: #171422;
+  --muted-foreground: #a5a0bc;
+  --accent: #2a1d55;
+  --accent-foreground: #c4b5fd;
+  --teal: #e879f9;
+  --teal-foreground: #26102b;
+  --border: #272238;
+  --input: #272238;
+  --ring: #a78bfa;
+  --chart-1: #a78bfa;
+  --chart-2: #e879f9;
+  --chart-3: #22d3ee;
+  --chart-4: #fbbf24;
+  --chart-5: #34d399;
+  --sidebar: #0e0b19;
+  --sidebar-foreground: #f4f2fb;
+  --sidebar-primary: #a78bfa;
+  --sidebar-primary-foreground: #1d1442;
+  --sidebar-accent: #241a47;
+  --sidebar-accent-foreground: #c4b5fd;
+  --sidebar-border: #2c2450;
+  --sidebar-ring: #a78bfa;
+  --swatch-1: #8b5cf6;
+  --swatch-2: #a855f7;
+  --swatch-3: #d946ef;
+  --glow: #c084fc;
+}
+
+/* ---- شفق قطبی (aurora) ---- */
+
+[data-theme="aurora"] { /* شفق قطبی — روشن */
+  --background: #f6fdfb;
+  --foreground: #0c2024;
+  --card: #ffffff;
+  --card-foreground: #0c2024;
+  --popover: #ffffff;
+  --popover-foreground: #0c2024;
+  --primary: #0e7490; /* سایان شفق — متمایز از فیروزهٔ خالص */
+  --primary-foreground: #ffffff;
+  --primary-deep: #0f766e;
+  --secondary: #edf6f4;
+  --secondary-foreground: #13343b;
+  --muted: #f0f9f7;
+  --muted-foreground: #5d7370;
+  --accent: #e6f8f4;
+  --accent-foreground: #0f5c54;
+  --teal: #0891b2;
+  --teal-foreground: #ffffff;
+  --border: #d9ece7;
+  --input: #d9ece7;
+  --ring: #0e7490;
+  --chart-1: #0e7490;
+  --chart-2: #0891b2;
+  --chart-3: #8b5cf6;
+  --chart-4: #d97706;
+  --chart-5: #059669;
+  --sidebar: #f0faf7;
+  --sidebar-foreground: #0c2024;
+  --sidebar-primary: #0e7490;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e6f8f4;
+  --sidebar-accent-foreground: #0f5c54;
+  --sidebar-border: #d5ebe4;
+  --sidebar-ring: #0e7490;
+  --swatch-1: #2dd4bf;
+  --swatch-2: #22d3ee;
+  --swatch-3: #8b5cf6;
+  --glow: #22d3ee;
+}
+
+.dark[data-theme="aurora"] { /* شفق قطبی — تاریک */
+  --background: #071114;
+  --foreground: #ecfbf9;
+  --card: #0d1a1d;
+  --card-foreground: #ecfbf9;
+  --popover: #0d1a1d;
+  --popover-foreground: #ecfbf9;
+  --primary: #22d3ee; /* سایان درخشان شفق */
+  --primary-foreground: #062a33;
+  --primary-deep: #2dd4bf;
+  --secondary: #14262a;
+  --secondary-foreground: #d7ebe8;
+  --muted: #112125;
+  --muted-foreground: #9ab5b0;
+  --accent: #0c3630;
+  --accent-foreground: #7cefe0;
+  --teal: #22d3ee;
+  --teal-foreground: #062a33;
+  --border: #1e3236;
+  --input: #1e3236;
+  --ring: #22d3ee;
+  --chart-1: #22d3ee;
+  --chart-2: #2dd4bf;
+  --chart-3: #a78bfa;
+  --chart-4: #fbbf24;
+  --chart-5: #34d399;
+  --sidebar: #091518;
+  --sidebar-foreground: #ecfbf9;
+  --sidebar-primary: #22d3ee;
+  --sidebar-primary-foreground: #062a33;
+  --sidebar-accent: #0c3630;
+  --sidebar-accent-foreground: #7cefe0;
+  --sidebar-border: #1b2f33;
+  --sidebar-ring: #22d3ee;
+  --swatch-1: #2dd4bf;
+  --swatch-2: #22d3ee;
+  --swatch-3: #8b5cf6;
+  --glow: #22d3ee;
+}
+
+/* ---- زمرد (emerald) ---- */
+
+[data-theme="emerald"] { /* زمرد — روشن */
+  --background: #f6fbf8;
+  --foreground: #0d1f16;
+  --card: #ffffff;
+  --card-foreground: #0d1f16;
+  --popover: #ffffff;
+  --popover-foreground: #0d1f16;
+  --primary: #047857;
+  --primary-foreground: #ffffff;
+  --primary-deep: #065f46;
+  --secondary: #ecf5f0;
+  --secondary-foreground: #143328;
+  --muted: #f1f8f4;
+  --muted-foreground: #5f7268;
+  --accent: #e8f8f0;
+  --accent-foreground: #065f46;
+  --teal: #d97706;
+  --teal-foreground: #ffffff;
+  --border: #daebe1;
+  --input: #daebe1;
+  --ring: #047857;
+  --chart-1: #047857;
+  --chart-2: #10b981;
+  --chart-3: #0891b2;
+  --chart-4: #d97706;
+  --chart-5: #7c3aed;
+  --sidebar: #f1f9f5;
+  --sidebar-foreground: #0d1f16;
+  --sidebar-primary: #047857;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e8f8f0;
+  --sidebar-accent-foreground: #065f46;
+  --sidebar-border: #d8eae0;
+  --sidebar-ring: #047857;
+  --swatch-1: #34d399;
+  --swatch-2: #10b981;
+  --swatch-3: #047857;
+  --glow: #10b981;
+}
+
+.dark[data-theme="emerald"] { /* زمرد — تاریک */
+  --background: #08120d;
+  --foreground: #edfbf4;
+  --card: #0e1a14;
+  --card-foreground: #edfbf4;
+  --popover: #0e1a14;
+  --popover-foreground: #edfbf4;
+  --primary: #34d399;
+  --primary-foreground: #03291d;
+  --primary-deep: #10b981;
+  --secondary: #142419;
+  --secondary-foreground: #d8ebe0;
+  --muted: #112016;
+  --muted-foreground: #9cb5a6;
+  --accent: #0b3826;
+  --accent-foreground: #7bf0bb;
+  --teal: #fbbf24;
+  --teal-foreground: #261903;
+  --border: #1e3328;
+  --input: #1e3328;
+  --ring: #34d399;
+  --chart-1: #34d399;
+  --chart-2: #fbbf24;
+  --chart-3: #22d3ee;
+  --chart-4: #a78bfa;
+  --chart-5: #f87171;
+  --sidebar: #0a150f;
+  --sidebar-foreground: #edfbf4;
+  --sidebar-primary: #34d399;
+  --sidebar-primary-foreground: #03291d;
+  --sidebar-accent: #0b3826;
+  --sidebar-accent-foreground: #7bf0bb;
+  --sidebar-border: #1c3327;
+  --sidebar-ring: #34d399;
+  --swatch-1: #34d399;
+  --swatch-2: #10b981;
+  --swatch-3: #047857;
+  --glow: #10b981;
+}
+
+/* ---- فیروزه ایرانی (teal) ---- */
+
+[data-theme="teal"] { /* فیروزه ایرانی — روشن */
+  --background: #f5fbfa;
+  --foreground: #0b1e1d;
+  --card: #ffffff;
+  --card-foreground: #0b1e1d;
+  --popover: #ffffff;
+  --popover-foreground: #0b1e1d;
+  --primary: #0f766e;
+  --primary-foreground: #ffffff;
+  --primary-deep: #115e59;
+  --secondary: #ebf4f3;
+  --secondary-foreground: #123332;
+  --muted: #f0f7f6;
+  --muted-foreground: #5c7170;
+  --accent: #e4f4f1;
+  --accent-foreground: #0e5a54;
+  --teal: #b45309;
+  --teal-foreground: #ffffff;
+  --border: #d7e9e7;
+  --input: #d7e9e7;
+  --ring: #0f766e;
+  --chart-1: #0f766e;
+  --chart-2: #14b8a6;
+  --chart-3: #b45309;
+  --chart-4: #7c3aed;
+  --chart-5: #db2777;
+  --sidebar: #f0f8f7;
+  --sidebar-foreground: #0b1e1d;
+  --sidebar-primary: #0f766e;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e4f4f1;
+  --sidebar-accent-foreground: #0e5a54;
+  --sidebar-border: #d3e8e5;
+  --sidebar-ring: #0f766e;
+  --swatch-1: #5eead4;
+  --swatch-2: #14b8a6;
+  --swatch-3: #0f766e;
+  --glow: #2dd4bf;
+}
+
+.dark[data-theme="teal"] { /* فیروزه ایرانی — تاریک */
+  --background: #06110f;
+  --foreground: #eafbf9;
+  --card: #0c1817;
+  --card-foreground: #eafbf9;
+  --popover: #0c1817;
+  --popover-foreground: #eafbf9;
+  --primary: #2dd4bf;
+  --primary-foreground: #032a27;
+  --primary-deep: #14b8a6;
+  --secondary: #122523;
+  --secondary-foreground: #d5ebe8;
+  --muted: #0f201e;
+  --muted-foreground: #97b4b1;
+  --accent: #083733;
+  --accent-foreground: #7bede2;
+  --teal: #fbbf24;
+  --teal-foreground: #261903;
+  --border: #1b3130;
+  --input: #1b3130;
+  --ring: #2dd4bf;
+  --chart-1: #2dd4bf;
+  --chart-2: #fbbf24;
+  --chart-3: #a78bfa;
+  --chart-4: #f87171;
+  --chart-5: #22d3ee;
+  --sidebar: #081312;
+  --sidebar-foreground: #eafbf9;
+  --sidebar-primary: #2dd4bf;
+  --sidebar-primary-foreground: #032a27;
+  --sidebar-accent: #083733;
+  --sidebar-accent-foreground: #7bede2;
+  --sidebar-border: #19302e;
+  --sidebar-ring: #2dd4bf;
+  --swatch-1: #5eead4;
+  --swatch-2: #14b8a6;
+  --swatch-3: #0f766e;
+  --glow: #2dd4bf;
+}
+
+/* ---- لاجورد (lapis) ---- */
+
+[data-theme="lapis"] { /* لاجورد — روشن */
+  --background: #f5f8ff;
+  --foreground: #0e1b32;
+  --card: #ffffff;
+  --card-foreground: #0e1b32;
+  --popover: #ffffff;
+  --popover-foreground: #0e1b32;
+  --primary: #1e40af;
+  --primary-foreground: #ffffff;
+  --primary-deep: #1e3a8a;
+  --secondary: #ebf0f9;
+  --secondary-foreground: #16294a;
+  --muted: #f0f4fa;
+  --muted-foreground: #5d6b80;
+  --accent: #e3ecfb;
+  --accent-foreground: #1e3a8a;
+  --teal: #b45309;
+  --teal-foreground: #ffffff;
+  --border: #d7dfee;
+  --input: #d7dfee;
+  --ring: #1e40af;
+  --chart-1: #1e40af;
+  --chart-2: #3b82f6;
+  --chart-3: #b45309;
+  --chart-4: #0d9488;
+  --chart-5: #db2777;
+  --sidebar: #eff4fc;
+  --sidebar-foreground: #0e1b32;
+  --sidebar-primary: #1e40af;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e3ecfb;
+  --sidebar-accent-foreground: #1e3a8a;
+  --sidebar-border: #d2ddec;
+  --sidebar-ring: #1e40af;
+  --swatch-1: #60a5fa;
+  --swatch-2: #2563eb;
+  --swatch-3: #1e3a8a;
+  --glow: #3b82f6;
+}
+
+.dark[data-theme="lapis"] { /* لاجورد — تاریک */
+  --background: #060d1a;
+  --foreground: #edf3fc;
+  --card: #0c1526;
+  --card-foreground: #edf3fc;
+  --popover: #0c1526;
+  --popover-foreground: #edf3fc;
+  --primary: #60a5fa;
+  --primary-foreground: #0a1b3d;
+  --primary-deep: #3b82f6;
+  --secondary: #152135;
+  --secondary-foreground: #d9e4f3;
+  --muted: #121c2f;
+  --muted-foreground: #9aaec8;
+  --accent: #12294d;
+  --accent-foreground: #a7c7fc;
+  --teal: #fbbf24;
+  --teal-foreground: #261903;
+  --border: #1e2e49;
+  --input: #1e2e49;
+  --ring: #60a5fa;
+  --chart-1: #60a5fa;
+  --chart-2: #fbbf24;
+  --chart-3: #22d3ee;
+  --chart-4: #f472b6;
+  --chart-5: #4ade80;
+  --sidebar: #081120;
+  --sidebar-foreground: #edf3fc;
+  --sidebar-primary: #60a5fa;
+  --sidebar-primary-foreground: #0a1b3d;
+  --sidebar-accent: #12294d;
+  --sidebar-accent-foreground: #a7c7fc;
+  --sidebar-border: #1c2c47;
+  --sidebar-ring: #60a5fa;
+  --swatch-1: #60a5fa;
+  --swatch-2: #2563eb;
+  --swatch-3: #1e3a8a;
+  --glow: #3b82f6;
+}
+
+/* ---- کهربای طلایی (amber) ---- */
+
+[data-theme="amber"] { /* کهربای طلایی — روشن */
+  --background: #fdfbf3;
+  --foreground: #211c09;
+  --card: #ffffff;
+  --card-foreground: #211c09;
+  --popover: #ffffff;
+  --popover-foreground: #211c09;
+  --primary: #b45309;
+  --primary-foreground: #ffffff;
+  --primary-deep: #92400e;
+  --secondary: #f7f1e3;
+  --secondary-foreground: #33290f;
+  --muted: #f9f4e9;
+  --muted-foreground: #736b57;
+  --accent: #fcf1da;
+  --accent-foreground: #92400e;
+  --teal: #0d9488;
+  --teal-foreground: #ffffff;
+  --border: #efe3c8;
+  --input: #efe3c8;
+  --ring: #b45309;
+  --chart-1: #b45309;
+  --chart-2: #f59e0b;
+  --chart-3: #0d9488;
+  --chart-4: #7c3aed;
+  --chart-5: #db2777;
+  --sidebar: #fbf7eb;
+  --sidebar-foreground: #211c09;
+  --sidebar-primary: #b45309;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fcf1da;
+  --sidebar-accent-foreground: #92400e;
+  --sidebar-border: #ede2c6;
+  --sidebar-ring: #b45309;
+  --swatch-1: #fde68a;
+  --swatch-2: #f59e0b;
+  --swatch-3: #b45309;
+  --glow: #fbbf24;
+}
+
+.dark[data-theme="amber"] { /* کهربای طلایی — تاریک */
+  --background: #120f05;
+  --foreground: #fbf6e7;
+  --card: #1a160a;
+  --card-foreground: #fbf6e7;
+  --popover: #1a160a;
+  --popover-foreground: #fbf6e7;
+  --primary: #fbbf24;
+  --primary-foreground: #261903;
+  --primary-deep: #f59e0b;
+  --secondary: #231d0d;
+  --secondary-foreground: #ede5cc;
+  --muted: #1f1a0c;
+  --muted-foreground: #bcb08c;
+  --accent: #362a0c;
+  --accent-foreground: #fce29a;
+  --teal: #2dd4bf;
+  --teal-foreground: #04302b;
+  --border: #332b16;
+  --input: #332b16;
+  --ring: #fbbf24;
+  --chart-1: #fbbf24;
+  --chart-2: #2dd4bf;
+  --chart-3: #f87171;
+  --chart-4: #a78bfa;
+  --chart-5: #4ade80;
+  --sidebar: #0f0c06;
+  --sidebar-foreground: #fbf6e7;
+  --sidebar-primary: #fbbf24;
+  --sidebar-primary-foreground: #261903;
+  --sidebar-accent: #362a0c;
+  --sidebar-accent-foreground: #fce29a;
+  --sidebar-border: #312915;
+  --sidebar-ring: #fbbf24;
+  --swatch-1: #fde68a;
+  --swatch-2: #f59e0b;
+  --swatch-3: #b45309;
+  --glow: #fbbf24;
+}
+
+/* ---- مرجان (coral) ---- */
+
+[data-theme="coral"] { /* مرجان — روشن */
+  --background: #fff8f5;
+  --foreground: #241209;
+  --card: #ffffff;
+  --card-foreground: #241209;
+  --popover: #ffffff;
+  --popover-foreground: #241209;
+  --primary: #c2410c;
+  --primary-foreground: #ffffff;
+  --primary-deep: #9a3412;
+  --secondary: #f9eee6;
+  --secondary-foreground: #362014;
+  --muted: #faf2ec;
+  --muted-foreground: #7a675c;
+  --accent: #fdebdd;
+  --accent-foreground: #9a3412;
+  --teal: #0d9488;
+  --teal-foreground: #ffffff;
+  --border: #f2e0d3;
+  --input: #f2e0d3;
+  --ring: #c2410c;
+  --chart-1: #c2410c;
+  --chart-2: #f97316;
+  --chart-3: #0d9488;
+  --chart-4: #7c3aed;
+  --chart-5: #db2777;
+  --sidebar: #fbf4ee;
+  --sidebar-foreground: #241209;
+  --sidebar-primary: #c2410c;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fdebdd;
+  --sidebar-accent-foreground: #9a3412;
+  --sidebar-border: #efdfd0;
+  --sidebar-ring: #c2410c;
+  --swatch-1: #fdba74;
+  --swatch-2: #f97316;
+  --swatch-3: #c2410c;
+  --glow: #fb923c;
+}
+
+.dark[data-theme="coral"] { /* مرجان — تاریک */
+  --background: #140b06;
+  --foreground: #fcf3ea;
+  --card: #1d130c;
+  --card-foreground: #fcf3ea;
+  --popover: #1d130c;
+  --popover-foreground: #fcf3ea;
+  --primary: #fb923c;
+  --primary-foreground: #2b1204;
+  --primary-deep: #f97316;
+  --secondary: #271a10;
+  --secondary-foreground: #f0e2d3;
+  --muted: #231710;
+  --muted-foreground: #c2a78e;
+  --accent: #3d1f0c;
+  --accent-foreground: #fdba8a;
+  --teal: #2dd4bf;
+  --teal-foreground: #04302b;
+  --border: #3a281a;
+  --input: #3a281a;
+  --ring: #fb923c;
+  --chart-1: #fb923c;
+  --chart-2: #2dd4bf;
+  --chart-3: #f87171;
+  --chart-4: #a78bfa;
+  --chart-5: #fbbf24;
+  --sidebar: #100b07;
+  --sidebar-foreground: #fcf3ea;
+  --sidebar-primary: #fb923c;
+  --sidebar-primary-foreground: #2b1204;
+  --sidebar-accent: #3d1f0c;
+  --sidebar-accent-foreground: #fdba8a;
+  --sidebar-border: #38261a;
+  --sidebar-ring: #fb923c;
+  --swatch-1: #fdba74;
+  --swatch-2: #f97316;
+  --swatch-3: #c2410c;
+  --glow: #fb923c;
+}
+
+/* ---- غروب (sunset) ---- */
+
+[data-theme="sunset"] { /* غروب — روشن */
+  --background: #fff8f6;
+  --foreground: #23101b;
+  --card: #ffffff;
+  --card-foreground: #23101b;
+  --popover: #ffffff;
+  --popover-foreground: #23101b;
+  --primary: #db2777;
+  --primary-foreground: #ffffff;
+  --primary-deep: #be185d;
+  --secondary: #f7eaf2;
+  --secondary-foreground: #341926;
+  --muted: #f9eff4;
+  --muted-foreground: #7a6572;
+  --accent: #fbe4ef;
+  --accent-foreground: #9d174d;
+  --teal: #ea580c;
+  --teal-foreground: #ffffff;
+  --border: #f0d8e5;
+  --input: #f0d8e5;
+  --ring: #db2777;
+  --chart-1: #db2777;
+  --chart-2: #ec4899;
+  --chart-3: #f97316;
+  --chart-4: #8b5cf6;
+  --chart-5: #0d9488;
+  --sidebar: #fdf1f7;
+  --sidebar-foreground: #23101b;
+  --sidebar-primary: #db2777;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fbe4ef;
+  --sidebar-accent-foreground: #9d174d;
+  --sidebar-border: #eed4e1;
+  --sidebar-ring: #db2777;
+  --swatch-1: #f97316;
+  --swatch-2: #ec4899;
+  --swatch-3: #a855f7;
+  --glow: #ec4899;
+}
+
+.dark[data-theme="sunset"] { /* غروب — تاریک */
+  --background: #130710;
+  --foreground: #fbf0f6;
+  --card: #1b0e19;
+  --card-foreground: #fbf0f6;
+  --popover: #1b0e19;
+  --popover-foreground: #fbf0f6;
+  --primary: #f472b6;
+  --primary-foreground: #2b0a1c;
+  --primary-deep: #ec4899;
+  --secondary: #251220;
+  --secondary-foreground: #f2deea;
+  --muted: #21111c;
+  --muted-foreground: #c0a3b6;
+  --accent: #3b0f2c;
+  --accent-foreground: #f9a8ce;
+  --teal: #fb923c;
+  --teal-foreground: #2b1204;
+  --border: #382032;
+  --input: #382032;
+  --ring: #f472b6;
+  --chart-1: #f472b6;
+  --chart-2: #fb923c;
+  --chart-3: #a78bfa;
+  --chart-4: #22d3ee;
+  --chart-5: #4ade80;
+  --sidebar: #0f0912;
+  --sidebar-foreground: #fbf0f6;
+  --sidebar-primary: #f472b6;
+  --sidebar-primary-foreground: #2b0a1c;
+  --sidebar-accent: #3b0f2c;
+  --sidebar-accent-foreground: #f9a8ce;
+  --sidebar-border: #351e30;
+  --sidebar-ring: #f472b6;
+  --swatch-1: #f97316;
+  --swatch-2: #ec4899;
+  --swatch-3: #a855f7;
+  --glow: #ec4899;
+}
+
+/* ---- گل‌سرخ (rose) ---- */
+
+[data-theme="rose"] { /* گل‌سرخ — روشن */
+  --background: #fff7f9;
+  --foreground: #26101a;
+  --card: #ffffff;
+  --card-foreground: #26101a;
+  --popover: #ffffff;
+  --popover-foreground: #26101a;
+  --primary: #e11d48;
+  --primary-foreground: #ffffff;
+  --primary-deep: #be123c;
+  --secondary: #f9edf1;
+  --secondary-foreground: #351722;
+  --muted: #fbf1f4;
+  --muted-foreground: #7c6670;
+  --accent: #fdebf0;
+  --accent-foreground: #9f1239;
+  --teal: #7c3aed;
+  --teal-foreground: #ffffff;
+  --border: #f2dce4;
+  --input: #f2dce4;
+  --ring: #e11d48;
+  --chart-1: #e11d48;
+  --chart-2: #fb7185;
+  --chart-3: #f59e0b;
+  --chart-4: #7c3aed;
+  --chart-5: #0d9488;
+  --sidebar: #fdf2f6;
+  --sidebar-foreground: #26101a;
+  --sidebar-primary: #e11d48;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fdebf0;
+  --sidebar-accent-foreground: #9f1239;
+  --sidebar-border: #f0d7e0;
+  --sidebar-ring: #e11d48;
+  --swatch-1: #fb7185;
+  --swatch-2: #f43f5e;
+  --swatch-3: #be123c;
+  --glow: #fb7185;
+}
+
+.dark[data-theme="rose"] { /* گل‌سرخ — تاریک */
+  --background: #140810;
+  --foreground: #fceff3;
+  --card: #1d0f17;
+  --card-foreground: #fceff3;
+  --popover: #1d0f17;
+  --popover-foreground: #fceff3;
+  --primary: #fb7185;
+  --primary-foreground: #2b0a14;
+  --primary-deep: #f43f5e;
+  --secondary: #261420;
+  --secondary-foreground: #f3dee6;
+  --muted: #22121b;
+  --muted-foreground: #c0a3b0;
+  --accent: #3d1226;
+  --accent-foreground: #fda4af;
+  --teal: #a78bfa;
+  --teal-foreground: #1d1442;
+  --border: #392030;
+  --input: #392030;
+  --ring: #fb7185;
+  --chart-1: #fb7185;
+  --chart-2: #a78bfa;
+  --chart-3: #fbbf24;
+  --chart-4: #22d3ee;
+  --chart-5: #4ade80;
+  --sidebar: #100a11;
+  --sidebar-foreground: #fceff3;
+  --sidebar-primary: #fb7185;
+  --sidebar-primary-foreground: #2b0a14;
+  --sidebar-accent: #3d1226;
+  --sidebar-accent-foreground: #fda4af;
+  --sidebar-border: #361e2e;
+  --sidebar-ring: #fb7185;
+  --swatch-1: #fb7185;
+  --swatch-2: #f43f5e;
+  --swatch-3: #be123c;
+  --glow: #fb7185;
+}
+
+/* ---- رزگلد (rose-gold) ---- */
+
+[data-theme="rose-gold"] { /* رزگلد — روشن */
+  --background: #fdf9f7;
+  --foreground: #241915;
+  --card: #ffffff;
+  --card-foreground: #241915;
+  --popover: #ffffff;
+  --popover-foreground: #241915;
+  --primary: #a85b67;
+  --primary-foreground: #ffffff;
+  --primary-deep: #8e4a54;
+  --secondary: #f4ebe8;
+  --secondary-foreground: #322522;
+  --muted: #f7f0ee;
+  --muted-foreground: #7c6a66;
+  --accent: #f3e4e1;
+  --accent-foreground: #8e4a54;
+  --teal: #b45309;
+  --teal-foreground: #ffffff;
+  --border: #e9dad6;
+  --input: #e9dad6;
+  --ring: #a85b67;
+  --chart-1: #a85b67;
+  --chart-2: #db8894;
+  --chart-3: #b45309;
+  --chart-4: #0d9488;
+  --chart-5: #334155;
+  --sidebar: #faf2f0;
+  --sidebar-foreground: #241915;
+  --sidebar-primary: #a85b67;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f3e4e1;
+  --sidebar-accent-foreground: #8e4a54;
+  --sidebar-border: #e6d6d1;
+  --sidebar-ring: #a85b67;
+  --swatch-1: #e3a6ae;
+  --swatch-2: #ce8a93;
+  --swatch-3: #a85b67;
+  --glow: #db8894;
+}
+
+.dark[data-theme="rose-gold"] { /* رزگلد — تاریک */
+  --background: #15100e;
+  --foreground: #faf1ee;
+  --card: #1d1613;
+  --card-foreground: #faf1ee;
+  --popover: #1d1613;
+  --popover-foreground: #faf1ee;
+  --primary: #e3a6ae;
+  --primary-foreground: #2e1116;
+  --primary-deep: #d08d97;
+  --secondary: #251c19;
+  --secondary-foreground: #f0e2de;
+  --muted: #221a17;
+  --muted-foreground: #c3ada8;
+  --accent: #3a201d;
+  --accent-foreground: #efb9bf;
+  --teal: #d97706;
+  --teal-foreground: #241503;
+  --border: #372722;
+  --input: #372722;
+  --ring: #e3a6ae;
+  --chart-1: #e3a6ae;
+  --chart-2: #d97706;
+  --chart-3: #5eead4;
+  --chart-4: #a78bfa;
+  --chart-5: #f87171;
+  --sidebar: #120d0b;
+  --sidebar-foreground: #faf1ee;
+  --sidebar-primary: #e3a6ae;
+  --sidebar-primary-foreground: #2e1116;
+  --sidebar-accent: #3a201d;
+  --sidebar-accent-foreground: #efb9bf;
+  --sidebar-border: #342420;
+  --sidebar-ring: #e3a6ae;
+  --swatch-1: #e3a6ae;
+  --swatch-2: #ce8a93;
+  --swatch-3: #a85b67;
+  --glow: #db8894;
+}
+
+/* ---- کهکشان (galaxy) ---- */
+
+[data-theme="galaxy"] { /* کهکشان — روشن */
+  --background: #fbf6fd;
+  --foreground: #1b1226;
+  --card: #ffffff;
+  --card-foreground: #1b1226;
+  --popover: #ffffff;
+  --popover-foreground: #1b1226;
+  --primary: #a21caf;
+  --primary-foreground: #ffffff;
+  --primary-deep: #86198f;
+  --secondary: #f4eaf8;
+  --secondary-foreground: #2c1b33;
+  --muted: #f6eff9;
+  --muted-foreground: #6f6379;
+  --accent: #f5e5fb;
+  --accent-foreground: #701a75;
+  --teal: #7c3aed;
+  --teal-foreground: #ffffff;
+  --border: #e9dbf0;
+  --input: #e9dbf0;
+  --ring: #a21caf;
+  --chart-1: #a21caf;
+  --chart-2: #c026d3;
+  --chart-3: #7c3aed;
+  --chart-4: #0891b2;
+  --chart-5: #d97706;
+  --sidebar: #f8f1fb;
+  --sidebar-foreground: #1b1226;
+  --sidebar-primary: #a21caf;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f5e5fb;
+  --sidebar-accent-foreground: #701a75;
+  --sidebar-border: #e5d7ec;
+  --sidebar-ring: #a21caf;
+  --swatch-1: #c084fc;
+  --swatch-2: #c026d3;
+  --swatch-3: #86198f;
+  --glow: #e879f9;
+}
+
+.dark[data-theme="galaxy"] { /* کهکشان — تاریک */
+  --background: #0c0612;
+  --foreground: #f8f1fc;
+  --card: #140c1f;
+  --card-foreground: #f8f1fc;
+  --popover: #140c1f;
+  --popover-foreground: #f8f1fc;
+  --primary: #e879f9;
+  --primary-foreground: #2a0a30;
+  --primary-deep: #c026d3;
+  --secondary: #1d1329;
+  --secondary-foreground: #ebe0f2;
+  --muted: #1a1124;
+  --muted-foreground: #b7a6c6;
+  --accent: #301041;
+  --accent-foreground: #f0abfc;
+  --teal: #a78bfa;
+  --teal-foreground: #1d1442;
+  --border: #2d1c3d;
+  --input: #2d1c3d;
+  --ring: #e879f9;
+  --chart-1: #e879f9;
+  --chart-2: #a78bfa;
+  --chart-3: #22d3ee;
+  --chart-4: #fbbf24;
+  --chart-5: #4ade80;
+  --sidebar: #0e0816;
+  --sidebar-foreground: #f8f1fc;
+  --sidebar-primary: #e879f9;
+  --sidebar-primary-foreground: #2a0a30;
+  --sidebar-accent: #301041;
+  --sidebar-accent-foreground: #f0abfc;
+  --sidebar-border: #2a1b3a;
+  --sidebar-ring: #e879f9;
+  --swatch-1: #c084fc;
+  --swatch-2: #c026d3;
+  --swatch-3: #86198f;
+  --glow: #e879f9;
+}
+
+/* ---- جنگل (forest) ---- */
+
+[data-theme="forest"] { /* جنگل — روشن */
+  --background: #f5faf5;
+  --foreground: #0f1f12;
+  --card: #ffffff;
+  --card-foreground: #0f1f12;
+  --popover: #ffffff;
+  --popover-foreground: #0f1f12;
+  --primary: #15803d;
+  --primary-foreground: #ffffff;
+  --primary-deep: #166534;
+  --secondary: #eaf3eb;
+  --secondary-foreground: #183322;
+  --muted: #f0f6f1;
+  --muted-foreground: #5e7263;
+  --accent: #e5f4e8;
+  --accent-foreground: #14532d;
+  --teal: #b45309;
+  --teal-foreground: #ffffff;
+  --border: #d6e7d8;
+  --input: #d6e7d8;
+  --ring: #15803d;
+  --chart-1: #15803d;
+  --chart-2: #22c55e;
+  --chart-3: #b45309;
+  --chart-4: #0891b2;
+  --chart-5: #7c3aed;
+  --sidebar: #f0f7f1;
+  --sidebar-foreground: #0f1f12;
+  --sidebar-primary: #15803d;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e5f4e8;
+  --sidebar-accent-foreground: #14532d;
+  --sidebar-border: #d2e4d4;
+  --sidebar-ring: #15803d;
+  --swatch-1: #4ade80;
+  --swatch-2: #22c55e;
+  --swatch-3: #15803d;
+  --glow: #22c55e;
+}
+
+.dark[data-theme="forest"] { /* جنگل — تاریک */
+  --background: #08120a;
+  --foreground: #ecfaee;
+  --card: #0e1a11;
+  --card-foreground: #ecfaee;
+  --popover: #0e1a11;
+  --popover-foreground: #ecfaee;
+  --primary: #4ade80;
+  --primary-foreground: #06290f;
+  --primary-deep: #22c55e;
+  --secondary: #14241a;
+  --secondary-foreground: #dcebe0;
+  --muted: #112016;
+  --muted-foreground: #9cb8a4;
+  --accent: #0b3320;
+  --accent-foreground: #7bf0a0;
+  --teal: #fbbf24;
+  --teal-foreground: #261903;
+  --border: #1d3324;
+  --input: #1d3324;
+  --ring: #4ade80;
+  --chart-1: #4ade80;
+  --chart-2: #fbbf24;
+  --chart-3: #22d3ee;
+  --chart-4: #a78bfa;
+  --chart-5: #f87171;
+  --sidebar: #0a140c;
+  --sidebar-foreground: #ecfaee;
+  --sidebar-primary: #4ade80;
+  --sidebar-primary-foreground: #06290f;
+  --sidebar-accent: #0b3320;
+  --sidebar-accent-foreground: #7bf0a0;
+  --sidebar-border: #1b3023;
+  --sidebar-ring: #4ade80;
+  --swatch-1: #4ade80;
+  --swatch-2: #22c55e;
+  --swatch-3: #15803d;
+  --glow: #22c55e;
+}
+
+/* ---- سفال ایرانی (terracotta) ---- */
+
+[data-theme="terracotta"] { /* سفال ایرانی — روشن */
+  --background: #fbf6f3;
+  --foreground: #231510;
+  --card: #ffffff;
+  --card-foreground: #231510;
+  --popover: #ffffff;
+  --popover-foreground: #231510;
+  --primary: #c05639;
+  --primary-foreground: #ffffff;
+  --primary-deep: #9c3d26;
+  --secondary: #f3eae5;
+  --secondary-foreground: #33211b;
+  --muted: #f6efeb;
+  --muted-foreground: #7a675f;
+  --accent: #f2e2d9;
+  --accent-foreground: #8f3a22;
+  --teal: #0d9488;
+  --teal-foreground: #ffffff;
+  --border: #e7d6cc;
+  --input: #e7d6cc;
+  --ring: #c05639;
+  --chart-1: #c05639;
+  --chart-2: #e07850;
+  --chart-3: #0d9488;
+  --chart-4: #d97706;
+  --chart-5: #7c3aed;
+  --sidebar: #f8f0eb;
+  --sidebar-foreground: #231510;
+  --sidebar-primary: #c05639;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f2e2d9;
+  --sidebar-accent-foreground: #8f3a22;
+  --sidebar-border: #e4d2c7;
+  --sidebar-ring: #c05639;
+  --swatch-1: #f09a72;
+  --swatch-2: #d06b4a;
+  --swatch-3: #b9472c;
+  --glow: #e58a63;
+}
+
+.dark[data-theme="terracotta"] { /* سفال ایرانی — تاریک */
+  --background: #140d0a;
+  --foreground: #faf1eb;
+  --card: #1c1410;
+  --card-foreground: #faf1eb;
+  --popover: #1c1410;
+  --popover-foreground: #faf1eb;
+  --primary: #e58a63;
+  --primary-foreground: #2b1006;
+  --primary-deep: #d06b41;
+  --secondary: #241912;
+  --secondary-foreground: #f0e2d8;
+  --muted: #201611;
+  --muted-foreground: #c0a894;
+  --accent: #3a2015;
+  --accent-foreground: #f2b291;
+  --teal: #2dd4bf;
+  --teal-foreground: #04302b;
+  --border: #362619;
+  --input: #362619;
+  --ring: #e58a63;
+  --chart-1: #e58a63;
+  --chart-2: #2dd4bf;
+  --chart-3: #fbbf24;
+  --chart-4: #a78bfa;
+  --chart-5: #4ade80;
+  --sidebar: #100b08;
+  --sidebar-foreground: #faf1eb;
+  --sidebar-primary: #e58a63;
+  --sidebar-primary-foreground: #2b1006;
+  --sidebar-accent: #3a2015;
+  --sidebar-accent-foreground: #f2b291;
+  --sidebar-border: #332418;
+  --sidebar-ring: #e58a63;
+  --swatch-1: #f09a72;
+  --swatch-2: #d06b4a;
+  --swatch-3: #b9472c;
+  --glow: #e58a63;
+}
+
+/* ---- گرافیت (graphite) ---- */
+
+[data-theme="graphite"] { /* گرافیت — روشن */
+  --background: #f9fafb;
+  --foreground: #101828;
+  --card: #ffffff;
+  --card-foreground: #101828;
+  --popover: #ffffff;
+  --popover-foreground: #101828;
+  --primary: #334155;
+  --primary-foreground: #ffffff;
+  --primary-deep: #1e293b;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #1c2739;
+  --muted: #f5f7fa;
+  --muted-foreground: #64748b;
+  --accent: #eef2f7;
+  --accent-foreground: #1e293b;
+  --teal: #059669;
+  --teal-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #334155;
+  --chart-1: #334155;
+  --chart-2: #64748b;
+  --chart-3: #059669;
+  --chart-4: #d97706;
+  --chart-5: #7c3aed;
+  --sidebar: #f3f6f9;
+  --sidebar-foreground: #101828;
+  --sidebar-primary: #334155;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eef2f7;
+  --sidebar-accent-foreground: #1e293b;
+  --sidebar-border: #dfe5ec;
+  --sidebar-ring: #334155;
+  --swatch-1: #94a3b8;
+  --swatch-2: #475569;
+  --swatch-3: #1e293b;
+  --glow: #64748b;
+}
+
+.dark[data-theme="graphite"] { /* گرافیت — تاریک */
+  --background: #0b0e13;
+  --foreground: #f1f5f9;
+  --card: #12161d;
+  --card-foreground: #f1f5f9;
+  --popover: #12161d;
+  --popover-foreground: #f1f5f9;
+  --primary: #cbd5e1;
+  --primary-foreground: #0f172a;
+  --primary-deep: #94a3b8;
+  --secondary: #1a2029;
+  --secondary-foreground: #e2e8f0;
+  --muted: #171c24;
+  --muted-foreground: #94a3b8;
+  --accent: #1e2733;
+  --accent-foreground: #d7dee8;
+  --teal: #34d399;
+  --teal-foreground: #03291d;
+  --border: #242b36;
+  --input: #242b36;
+  --ring: #cbd5e1;
+  --chart-1: #94a3b8;
+  --chart-2: #34d399;
+  --chart-3: #fbbf24;
+  --chart-4: #a78bfa;
+  --chart-5: #22d3ee;
+  --sidebar: #0d1117;
+  --sidebar-foreground: #f1f5f9;
+  --sidebar-primary: #cbd5e1;
+  --sidebar-primary-foreground: #0f172a;
+  --sidebar-accent: #1e2733;
+  --sidebar-accent-foreground: #d7dee8;
+  --sidebar-border: #222935;
+  --sidebar-ring: #cbd5e1;
+  --swatch-1: #94a3b8;
+  --swatch-2: #475569;
+  --swatch-3: #1e293b;
+  --glow: #64748b;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    overflow-x: hidden;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  /* اعداد جدولی برای هم‌ترازی ستون‌های مالی + فعال‌سازی قلم اعداد فارسی */
+  .tnum,
+  table,
+  .font-tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1, "ss01" 1;
+    font-variant-east-asian: proportional-width;
+  }
+}
+
+/* ============ اسکرول‌بار سفارشی — تم ایندیگو ============ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--primary) 20%, transparent);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--primary) 40%, transparent);
+  background-clip: content-box;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--primary) 30%, transparent);
+  background-clip: content-box;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--primary) 50%, transparent);
+  background-clip: content-box;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--primary) 20%, transparent) transparent;
+}
+
+/* ============ انتقال نرم تغییر تم ============ */
+html,
+html *,
+html *::before,
+html *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.15s ease, box-shadow 0.3s ease !important;
+}
+
+/* ============ انیمیشن‌های بازخورد (میکرواینترکشن‌ها) ============ */
+
+/* ورود صفحه: fade-in + translateY */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ورود صفحه: fade-in + translateY — stagger list items */
+.animate-fade-in-up {
+  animation: fadeInUp 0.3s ease-out backwards;
+}
+
+/* PERF(speed): ورود ماژول هنگام سوئیچ بین قسمت‌ها — کوتاه و سریع (۱۵۰ms)
+   تا جابجایی «آنی» حس شود؛ فقط transform/opacity (GPU-composited) */
+@keyframes moduleEnter {
+  from {
+    opacity: 0.4;
+    transform: translateY(4px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.module-enter {
+  animation: moduleEnter 0.15s ease-out backwards;
+  will-change: opacity, transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .module-enter {
+    animation: none;
+  }
+}
+
+/* ورود ردیف‌ها با stagger */
+@keyframes staggerIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-stagger {
+  animation: staggerIn 0.3s ease-out backwards;
+}
+
+/* scale-in برای چک‌مارک ثبت سند */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* لرزش خطا */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+.animate-shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+/* scale برای مودال/Command Palette */
+@keyframes scaleFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-scale-fade {
+  animation: scaleFadeIn 0.15s ease-out;
+}
+
+/* رسم مسیر نمودار */
+@keyframes drawPath {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+.animate-draw-path {
+  stroke-dasharray: 1000;
+  animation: drawPath 1s ease-out forwards;
+}
+
+/* ============ کامپوننت‌های پایه بازطراحی‌شده ============ */
+
+/* کارت: سایه نازک — تعریف پایه (تعریف کامل‌تر hover در بخش میکرواینترکشن‌ها) */
+.card-hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* جدول‌ها: zebra + hover — هماهنگ با متغیرهای تم (v13.2: قبلاً رنگ ثابت
+   #fafafa بود که با پس‌زمینه‌های ته‌رنگ‌دار ۱۴ تم جدید نمی‌نشست) */
+.table-zebra tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--muted) 38%, transparent);
+}
+.table-zebra tbody tr:hover {
+  background: color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+/* v13.2 — هدر چسبان جدول: در جدول‌های بلند (۱۲۰۰+ کالا) هدر موقع اسکرول
+   عمودی می‌ماند؛ پس‌زمینه از popover با کمی شفافیت + blur تا محتوا زیرش
+   محو دیده شود و ترجمه‌اش نکنده باشد */
+.table-sticky-head thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: color-mix(in srgb, var(--popover) 92%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: inset 0 -1px 0 var(--border);
+}
+.dark .table-sticky-head thead th {
+  background: color-mix(in srgb, var(--popover) 88%, transparent);
+}
+
+/* v13.2 — اسکرول نرم برای کانتینرهای جدول + لبهٔ محو (fade) هنگام اسکرول */
+.nice-scroll {
+  scrollbar-width: thin;
+  overscroll-behavior: contain;
+}
+.nice-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.nice-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--primary) 22%, transparent);
+  border-radius: 3px;
+}
+.nice-scroll::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--primary) 42%, transparent);
+}
+
+/* v13.2 — اعداد جدول‌ها: تراز عمودی ارقام (قیمت/موجودی زیر هم می‌نشینند) */
+.tabular-nums,
+.tabular-nums td {
+  font-variant-numeric: tabular-nums;
+}
+
+/* v13.4 — اسکلتون با درخشش (shimmer): جاروی مورب نور روی placeholderها به‌جای
+   پالس ساده — هماهنگ با تم (رنگ از --background می‌گیرد تا روی هر ۱۴ تم بنشیند) */
+[data-slot="skeleton"] {
+  position: relative;
+  overflow: hidden;
+}
+[data-slot="skeleton"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--background) 68%, transparent),
+    transparent
+  );
+  animation: skeleton-shimmer 1.7s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-slot="skeleton"]::after {
+    animation: none;
+  }
+}
+
+/* v13.4 — سایهٔ hover کارت‌ها با ته‌رنگ primary تم (به‌جای سایهٔ خاکستری ثابت) */
+.card-hover {
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+.card-hover:hover {
+  box-shadow: 0 4px 18px -6px color-mix(in srgb, var(--primary) 28%, transparent);
+}
+
+/* v13.4 — لهجهٔ گرادیانی بالای کارت ویجت‌ها (کلاس widget-topline روی کارتِ
+   relative+overflow-hidden) — همیشه با کدری ۴۰٪، روی hover تمام‌رنگ */
+.widget-topline::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 2px;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.45;
+  transition: opacity 0.3s ease;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--primary) 60%, transparent),
+    transparent
+  );
+}
+.widget-topline:hover::before {
+  opacity: 1;
+}
+
+/* v13.4 — رنگ انتخاب متن هماهنگ با تم (به‌جای آبی پیش‌فرض مرورگر) */
+::selection {
+  background: color-mix(in srgb, var(--primary) 24%, transparent);
+}
+.dark ::selection {
+  background: color-mix(in srgb, var(--primary) 38%, transparent);
+}
+
+/* هایلایت Command Palette */
+.cmdk-highlight mark {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+/* v13.3 — چاپ تمیز کل اپ (Ctrl+P): سایدبار/نوار ابزار/دکمه‌ها حذف؛ فقط محتوای اصلی.
+   دیالوگ چاپ لیبل خودش iframe مستقل دارد و از این قواعد اثر نمی‌پذیرد. */
+@media print {
+  /* عناصر ناوبری و کنترل‌ها هرگز چاپ نشوند */
+  [data-sidebar],
+  aside,
+  nav,
+  header,
+  button:not(.label-cell button),
+  .no-print {
+    display: none !important;
+  }
+  /* محتوا تمام‌عرض و بدون پس‌زمینهٔ رنگی (جوهر‌ساز) */
+  main,
+  [role="main"] {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  /* جدول‌ها: خطوط واضح مونوکروم */
+  table {
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    border: 0.3pt solid #999;
+  }
+  /* zebra در چاپ خیلی کم‌رنگ — فقط برای خوانایی */
+  .table-zebra tbody tr:nth-child(even) {
+    background: #f5f5f5 !important;
+  }
+  /* صفحه‌شکنی ردیف‌ها: هیچ ردیفی از وسط نصف نشود */
+  tr,
+  .card-hover {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
+/* اسپارک‌لاین */
+.sparkline path {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* skeleton — shimmer ایندیگو-رنگ (برای بارگذاری ماژول‌ها) */
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--primary) 5%, transparent) 25%,
+    color-mix(in srgb, var(--primary) 10%, transparent) 50%,
+    color-mix(in srgb, var(--primary) 5%, transparent) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 0.5rem;
+}
+.dark .skeleton {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--primary) 8%, transparent) 25%,
+    color-mix(in srgb, var(--primary) 15%, transparent) 50%,
+    color-mix(in srgb, var(--primary) 8%, transparent) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* فاصله‌گذاری محتوای اصلی */
+.content-padding {
+  padding: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .content-padding {
+    padding: 2rem;
+  }
+}
+
+/* خط تاکید زیر عنوان فعال */
+.nav-indicator {
+  position: absolute;
+  inset-inline-end: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 3px;
+  border-radius: 3px 0 0 3px;
+  background: var(--primary);
+}
+
+/* نقطه چین ذخیره خودکار */
+@keyframes autoSavePulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+.auto-save-dot {
+  animation: autoSavePulse 1s ease-in-out infinite;
+}
+
+/* پالس دکمه مهم (box-shadow pulse) */
+@keyframes pulse-shadow {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary) 40%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+/* ============ میکرواینترکشن‌های اضافی ============ */
+
+/* Number count-up — برای اعداد مهم */
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-count-up {
+  animation: countUp 0.4s ease-out;
+}
+
+/* Checkmark pop — برای تیک موفقیت */
+@keyframes checkPop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-check-pop {
+  animation: checkPop 0.3s ease-out;
+}
+
+/* Slide in from right (RTL) — برای toast ها و بنرها */
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+/* Slide out to right */
+@keyframes slideOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+.animate-slide-out-right {
+  animation: slideOutRight 0.25s ease-in forwards;
+}
+
+/* Pulse glow — برای دکمه‌های مهم (CTA) */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary) 40%, transparent); }
+  50% { box-shadow: 0 0 0 8px transparent; }
+}
+.animate-pulse-glow {
+  animation: pulseGlow 2s infinite;
+}
+
+/* Card hover lift — برای کارت‌های تعاملی */
+.card-hover {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+.dark .card-hover:hover {
+  box-shadow: 0 8px 25px -5px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* Button press effect */
+button:active:not(:disabled),
+[role="button"]:active:not(:disabled) {
+  transform: scale(0.97);
+  transition: transform 0.1s ease-out;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.dark .glass {
+  background: rgba(20, 20, 23, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* گرادیان ملایم آیکون */
+.icon-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary) 60%, color-mix(in srgb, var(--primary) 50%, transparent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* انیمیشن grid pattern لندینگ */
+@keyframes gridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+.grid-pattern {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--primary) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--primary) 4%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 20s linear infinite;
+}
+
+/* orb floating */
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+.orb-float {
+  animation: orbFloat 15s ease-in-out infinite;
+}
+
+/* shimmer effect for CTA buttons */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* marquee scroll for trust badges */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============ انیمیشن‌های اضافی استایل ============ */
+
+/* انیمیشن گرا دیان بردر برای کارت‌های قیمت‌گذاری */
+@keyframes borderGlow {
+  0%, 100% { border-color: color-mix(in srgb, var(--primary) 30%, transparent); }
+  50% { border-color: color-mix(in srgb, var(--primary) 60%, transparent); }
+}
+.border-glow-animate {
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+/* اسکرول ریویل کلاس */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ استایل محتوای مقاله بلاگ ============
+   HTML ناشی از CMS را به‌خوبی نمایش می‌دهد */
+.blog-content {
+  font-feature-settings: "ss01";
+}
+.blog-content > *:first-child {
+  margin-top: 0;
+}
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4 {
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.4;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+}
+.blog-content h2 {
+  font-size: 1.4rem;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border);
+}
+.blog-content h3 {
+  font-size: 1.15rem;
+}
+.blog-content h4 {
+  font-size: 1rem;
+}
+.blog-content p {
+  margin: 1em 0;
+  color: var(--foreground);
+  opacity: 0.9;
+}
+.blog-content a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.blog-content a:hover {
+  opacity: 0.8;
+}
+.blog-content ul,
+.blog-content ol {
+  margin: 1em 0;
+  padding-inline-start: 1.5em;
+}
+.blog-content ul {
+  list-style: disc;
+}
+.blog-content ol {
+  list-style: decimal;
+}
+.blog-content li {
+  margin: 0.4em 0;
+  color: var(--foreground);
+  opacity: 0.9;
+}
+.blog-content blockquote {
+  margin: 1.5em 0;
+  padding: 0.8em 1.2em;
+  border-inline-start: 4px solid var(--primary);
+  background: var(--accent);
+  color: var(--accent-foreground);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.blog-content blockquote p {
+  margin: 0;
+  opacity: 1;
+  font-weight: 500;
+}
+.blog-content code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--muted);
+  color: var(--foreground);
+  padding: 0.15em 0.4em;
+  border-radius: 0.3rem;
+  direction: ltr;
+  display: inline-block;
+}
+.blog-content pre {
+  margin: 1.2em 0;
+  padding: 1em 1.2em;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  overflow-x: auto;
+  direction: ltr;
+  text-align: left;
+}
+.blog-content pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.85em;
+}
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1.5em 0;
+}
+.blog-content table {
+  width: 100%;
+  margin: 1.5em 0;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.blog-content th,
+.blog-content td {
+  padding: 0.6em 0.9em;
+  text-align: right;
+  border: 1px solid var(--border);
+}
+.blog-content th {
+  background: var(--muted);
+  font-weight: 600;
+  color: var(--foreground);
+}
+.blog-content hr {
+  margin: 2em 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* CMS rich text editor placeholder */
+/* FIX(2-d): --muted-foreground مقدار hex است — hsl(var(...)) نامعتبر می‌شد و
+   placeholder رنگ muted نمی‌گرفت؛ مستقیم از خود متغیر استفاده می‌شود */
+[contenteditable][data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: var(--muted-foreground);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ============ تنظیمات قالب کاربر (theme / font-size / density) ============
+   این کلاس‌ها به‌صورت پویا به <html> اضافه می‌شوند (از settings-dialog).
+   متغیرها در :root و .dark نیز قابل تنظیم هستند. */
+
+/* متغیر پیش‌فرض اندازه قلم */
+:root {
+  --font-size-base: 14px;
+  --spacing-scale: 1;
+}
+
+/* اندازه قلم: کوچک */
+html.font-size-sm {
+  --font-size-base: 13px;
+}
+html.font-size-sm body {
+  font-size: 13px;
+}
+
+/* اندازه قلم: متوسط (پیش‌فرض) */
+html.font-size-md {
+  --font-size-base: 14px;
+}
+html.font-size-md body {
+  font-size: 14px;
+}
+
+/* اندازه قلم: بزرگ */
+html.font-size-lg {
+  --font-size-base: 16px;
+}
+html.font-size-lg body {
+  font-size: 16px;
+}
+
+/* تراکم: فشرده
+   - کاهش فاصله‌گذاری سراسری
+   - کاهش ارتفاع دکمه‌ها و فیلدها در حد مجاز */
+html.compact {
+  --spacing-scale: 0.85;
+}
+html.compact .content-padding {
+  padding: 1rem;
+}
+@media (min-width: 1024px) {
+  html.compact .content-padding {
+    padding: 1.25rem;
+  }
+}
+/* فشرده‌سازی gap و space-y در کارت‌ها */
+html.compact .card-hover > * {
+  letter-spacing: -0.01em;
+}
+
+/* ============ Mobile Dialogs (Issue 3 → بازطراحی Task 21-C) ============
+   ریشه‌ی باگ «دیالوگ در گوشه، نصفه‌کار» (گزارش مالک):
+   Tailwind v4 برای translate-x/y از «property: translate» استفاده می‌کند نه
+   transform؛ بنابراین `transform: none !important` قدیمی جابه‌جایی -50٪ را
+   خنثی نمی‌کرد و DialogContentِ inset:0 با آفست -50٪ نصفش بیرون از گوشه
+   می‌افتاد. راه‌حل: مرکز‌چینِ صریح با خود property: translate.
+   همچنین سلکتور `[role="dialog"][data-state="open"] > *` حذف شد — فقط
+   فرزندان Radix DialogContent را می‌گرفت (دکمه‌ی بستن را all-size می‌کرد و
+   header/footer را height:100٪ کش می‌داد).
+   روی موبایل (≤ 640px): دیالوگ ۹۵vw، حداکثر ۹۲dvh، مرکز‌چین، اسکرول داخلی. */
+@media (max-width: 640px) {
+  [data-slot="dialog-content"],
+  [data-slot="alert-dialog-content"],
+  .modal-container {
+    /* FIX(MOBILE-DIALOG-v7 — راه‌حل ریشه‌ای نهایی): کلاس‌های پایه‌ی DialogContent
+    خودش وسط‌چین کامل است (fixed top-[50%] left-[50%] + translate-x/y-[-50%]).
+    هر override موقعیتی (inset/top/left/transform) با translate پایه تداخل
+    two-shift می‌سازد (Lightning CSS ترتیب تا شدن را هم عوض می‌کند) —
+    بنابراین فقط اندازه/اسکرول را override می‌کنیم و موقعیت را دست نمی‌زنیم.
+    */
+    width: 95vw !important;
+    max-width: 95vw !important;
+    height: auto !important;
+    max-height: min(92dvh, 100%) !important;
+    margin: 0 !important;
+    border-radius: 0.875rem !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    /* padding را بازنویسی نمی‌کنیم — دیالوگ‌هایی مثل پالت فرمان/مودال تریال
+       ساختار داخلی p-0 دارند و پدینگ اجباری، هدر گرادیانی full-bleed را
+       می‌شکند. p-6 پیش‌فرض روی دیالوگ ۹۵vw برای موبایل مناسب است. */
+  }
+
+  /* تور ایمنی: هر دیالوگ سفارشی دیگر (بدون data-slot) هم درون viewport می‌ماند */
+  [role="dialog"][data-state="open"]:not([data-slot]):not([data-tour]) {
+    max-width: 95vw !important;
+    max-height: 92dvh !important;
+    overflow-y: auto !important;
+  }
+
+  /* جلوگیری از بریدن footer — sticky در پایین */
+  [data-slot="dialog-content"] > [data-slot="dialog-footer"],
+  [data-slot="dialog-content"] > .dialog-footer-sticky {
+    position: sticky !important;
+    bottom: 0 !important;
+    background: var(--background) !important;
+    border-top: 1px solid var(--border) !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    margin-top: auto !important;
+  }
+
+  /* header نیز sticky در بالا برای دسترسی همیشگی به دکمه‌ی بستن */
+  [data-slot="dialog-content"] > [data-slot="dialog-header"],
+  [data-slot="dialog-content"] > .dialog-header-sticky {
+    position: sticky !important;
+    top: 0 !important;
+    background: var(--background) !important;
+    z-index: 1 !important;
+    border-bottom: 1px solid var(--border) !important;
+    padding-bottom: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* overlay نیز روی موبایل تیره‌تر تا تمرکز روی Dialog باشد */
+  [data-slot="dialog-overlay"] {
+    background: rgba(0, 0, 0, 0.55) !important;
+  }
+}
+
+/* ============ Compact Dialogs — لپ‌تاپ‌های کوچک (گزارش مالک) ============
+   شکایت: «پاپ‌آپ‌ها فضای زیادی می‌گیرن؛ لپ‌تاپ‌های با صفحهٔ کوچک بعضی
+   قسمت‌ها دیده نمی‌شه». روی نمایشگرهای کم‌ارتفاع (≤ ۸۲۰px ارتفاع، دسکتاپ
+   و تبلت بزرگ): پدینگ/گپ دیالوگ جمع‌تر، عنوان/توضیح کوچک‌تر، سقف ارتفاع
+   ۸۲dvh با اسکرول داخلی و هدر/فوتر چسبان (پیش‌فرض عمومی DialogContent از
+   ui/dialog.tsx روی 85dvh است). دیالوگ‌های p-0 (تنظیمات/پالت فرمان)
+   دست‌نخورده می‌مانند (:not(.p-0)). */
+@media (min-width: 641px) and (max-height: 820px) {
+  [data-slot="dialog-content"],
+  [data-slot="alert-dialog-content"],
+  .modal-container {
+    max-height: min(82dvh, calc(100dvh - 1.5rem)) !important;
+  }
+
+  /* پدینگ فشرده — فقط دیالوگ‌هایی که خودشان p-0 ندارند */
+  [data-slot="dialog-content"]:not(.p-0) {
+    padding: 0.875rem !important;
+  }
+  [data-slot="dialog-content"]:not(.gap-0):not(.p-0) {
+    gap: 0.625rem !important;
+  }
+
+  /* عنوان و توضیح جمع‌تر */
+  [data-slot="dialog-content"] [data-slot="dialog-title"] {
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+  }
+  [data-slot="dialog-content"] [data-slot="dialog-description"] {
+    font-size: 0.75rem !important;
+    line-height: 1.125rem !important;
+  }
+  [data-slot="dialog-content"] [data-slot="dialog-header"] {
+    gap: 0.25rem !important;
+  }
+  [data-slot="dialog-content"] [data-slot="dialog-footer"] {
+    gap: 0.5rem !important;
+    margin-top: 0.375rem !important;
+  }
+
+  /* هدر و فوتر چسبان — کلید بستن و دکمه‌ها همیشه در دسترس */
+  [data-slot="dialog-content"]:not(.p-0) > [data-slot="dialog-header"] {
+    position: sticky !important;
+    top: -0.875rem !important;
+    z-index: 1 !important;
+    background: var(--background) !important;
+    margin: -0.875rem -0.875rem 0.25rem !important;
+    padding: 0.625rem 0.875rem 0.5rem !important;
+    border-bottom: 1px solid var(--border) !important;
+  }
+  [data-slot="dialog-content"]:not(.p-0) > [data-slot="dialog-footer"] {
+    position: sticky !important;
+    bottom: -0.875rem !important;
+    background: var(--background) !important;
+    margin: 0.25rem -0.875rem -0.875rem !important;
+    padding: 0.5rem 0.875rem 0.625rem !important;
+    border-top: 1px solid var(--border) !important;
+  }
+
+  /* فهرست‌های بلند داخل دیالوگ: سقف ارتفاع + اسکرول داخلی نازک */
+  [data-slot="dialog-content"] .compact-scroll {
+    max-height: 60dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+/* اسکرول‌بار خیلی نازک برای لیست‌های بلند داخل دیالوگ/پاپ‌آپ —
+   ابزار اختیاری .compact-scroll (گزارش مالک: پاپ‌آپ‌ها مینیمال‌تر) */
+.compact-scroll {
+  scrollbar-width: thin;
+}
+.compact-scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.compact-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.compact-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--primary) 25%, transparent);
+  border-radius: 3px;
+}
+.compact-scroll::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--primary) 45%, transparent);
+}
+
+/* ============ Form Validation Error States (Issue 2) ============
+   کلاس‌های کمکی برای نمایش خطای فرم به‌صورت یکپارچه. */
+.input-error {
+  border-color: var(--destructive) !important;
+  box-shadow: 0 0 0 1px var(--destructive) !important;
+}
+.input-error:focus-visible {
+  outline: 2px solid var(--destructive) !important;
+  outline-offset: 2px;
+}
+.field-error-text {
+  color: var(--destructive);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+.field-error-text::before {
+  content: "— ";
+  opacity: 0.7;
+}
+
+/* ============ Polish: میکرواینترکشن‌های اضافی (Task 20-styling-polish) ============ */
+
+/* Glow Pulse — برای دکمه‌های CTA مهم (هشدار، نقطه اتمام سررسید) */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.45);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(245, 158, 11, 0);
+    opacity: 0.85;
+  }
+}
+.animate-glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+/* Slide-Up-Fade — برای ورود آیتم‌های جدید (فاکتور/ردیف) */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-slide-up-fade {
+  animation: slideUpFade 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Due-Soon Pulse — برای چک‌های نزدیک سررسید (treasury) */
+@keyframes dueSoonPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(245, 158, 11, 0);
+  }
+}
+.animate-due-soon {
+  animation: dueSoonPulse 1.8s ease-in-out infinite;
+}
+
+/* KPI gradient border accent — قاب گرادیان نازک دور بخش شاخص‌ها */
+.kpi-gradient-border {
+  position: relative;
+  border-radius: 1rem;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--primary) 45%, transparent) 0%,
+    rgba(13, 148, 136, 0.35) 45%,
+    rgba(245, 158, 11, 0.4) 100%
+  );
+}
+.dark .kpi-gradient-border {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--primary) 50%, transparent) 0%,
+    rgba(45, 212, 191, 0.35) 45%,
+    rgba(251, 191, 36, 0.4) 100%
+  );
+}
+.kpi-gradient-border > .kpi-gradient-inner {
+  background: var(--background);
+  border-radius: calc(1rem - 1px);
+}
+
+/* Kanban card hover scale — برای کارت‌های فرصت در CRM */
+.kanban-card {
+  transition:
+    transform 0.18s ease-out,
+    border-color 0.18s ease-out,
+    box-shadow 0.18s ease-out;
+}
+.kanban-card:hover {
+  transform: translateY(-2px) scale(1.015);
+  box-shadow: 0 6px 18px -6px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+/* Gradient card header — برای هدر کارت‌های حساب بانکی و ستون‌های کانبان */
+.gradient-card-header {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--primary) 8%, transparent) 0%,
+    rgba(13, 148, 136, 0.06) 50%,
+    rgba(245, 158, 11, 0.05) 100%
+  );
+}
+.dark .gradient-card-header {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--primary) 10%, transparent) 0%,
+    rgba(45, 212, 191, 0.08) 50%,
+    rgba(251, 191, 36, 0.06) 100%
+  );
+}
+
+/* CTA gradient button — برای دکمه «فاکتور جدید» */
+.cta-gradient {
+  background-image: linear-gradient(
+    105deg,
+    var(--primary) 0%,
+    var(--primary) 45%,
+    var(--primary-deep) 100%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  transition: background-position 0.4s ease, box-shadow 0.25s ease, transform 0.15s ease;
+  box-shadow: 0 4px 14px -4px color-mix(in srgb, var(--primary) 45%, transparent);
+}
+.cta-gradient:hover {
+  background-position: 0 0;
+  box-shadow: 0 8px 22px -6px color-mix(in srgb, var(--primary) 55%, transparent);
+}
+.cta-gradient:active {
+  transform: translateY(1px) scale(0.99);
+}
+.dark .cta-gradient {
+  box-shadow: 0 4px 14px -4px color-mix(in srgb, var(--primary) 45%, transparent);
+}
+.dark .cta-gradient:hover {
+  box-shadow: 0 8px 22px -6px color-mix(in srgb, var(--primary) 55%, transparent);
+}
+
+/* Enhanced skeleton shimmer — شیمر قوی‌تر برای KPI skeleton */
+@keyframes shimmerStrong {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--primary) 5%, transparent);
+  border-radius: 0.5rem;
+}
+.skeleton-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmerStrong 1.4s ease-in-out infinite;
+}
+.dark .skeleton-shimmer {
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+.dark .skeleton-shimmer::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmerStrong 1.4s ease-in-out infinite;
+}
+
+/* Dark mode scrollbar enhancement — نازک‌تر و با hover واضح‌تر */
+.dark ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: rgba(13, 13, 15, 0.5);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--primary) 25%, transparent);
+  border: 2px solid transparent;
+  background-clip: content-box;
+  border-radius: 8px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--primary) 50%, transparent);
+  background-clip: content-box;
+}
+
+/* Gradient text utility — برای عنوان‌های برجسته */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 50%, var(--teal) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Row hover highlight — برای جداول سفارشی (مثل چک‌های سررسید) */
+.row-hover-highlight {
+  transition: background-color 0.18s ease-out, box-shadow 0.18s ease-out;
+}
+.row-hover-highlight:hover {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--primary) 4%, transparent) 0%,
+    rgba(13, 148, 136, 0.04) 100%
+  );
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+.dark .row-hover-highlight:hover {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--primary) 6%, transparent) 0%,
+    rgba(45, 212, 191, 0.05) 100%
+  );
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+
+/* ============ 3D Animated Login (AuthView) — بدون ایندیگو/آبی ============
+   پالت: تیال (primary brand در این نما) + زمردی + کهربایی + بنفش/رز
+   ============================================================ */
+
+/* پس‌زمینه گرادیان ملایم متحرک */
+@keyframes authMeshDrift {
+  0%   { background-position: 0% 0%, 100% 100%, 50% 50%; }
+  50%  { background-position: 100% 50%, 0% 50%, 80% 20%; }
+  100% { background-position: 0% 0%, 100% 100%, 50% 50%; }
+}
+.auth-mesh {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(13, 148, 136, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.10) 0%, transparent 55%);
+  background-size: 200% 200%, 200% 200%, 180% 180%;
+  animation: authMeshDrift 24s ease-in-out infinite;
+}
+.dark .auth-mesh {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(45, 212, 191, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(52, 211, 153, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.10) 0%, transparent 55%);
+}
+
+/* 4 orb با مسیرهای متفاوت برای عمق سه‌بعدی */
+@keyframes authOrbA {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%      { transform: translate3d(40px, -30px, 0) scale(1.08); }
+  66%      { transform: translate3d(-25px, 35px, 0) scale(0.94); }
+}
+@keyframes authOrbB {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%      { transform: translate3d(-50px, 25px, 0) scale(1.1); }
+  66%      { transform: translate3d(30px, -40px, 0) scale(0.92); }
+}
+@keyframes authOrbC {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(60px, 40px, 0) scale(1.12); }
+}
+@keyframes authOrbD {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  40%      { transform: translate3d(-35px, -45px, 0) scale(0.9); }
+  70%      { transform: translate3d(45px, 30px, 0) scale(1.06); }
+}
+.auth-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  will-change: transform;
+  pointer-events: none;
+}
+.auth-orb-a { animation: authOrbA 18s ease-in-out infinite; }
+.auth-orb-b { animation: authOrbB 22s ease-in-out infinite; }
+.auth-orb-c { animation: authOrbC 26s ease-in-out infinite; }
+.auth-orb-d { animation: authOrbD 20s ease-in-out infinite; }
+
+/* میدان ذرات کوچک برای عمق (CSS-only با radial-gradient) */
+@keyframes authTwinkle {
+  0%, 100% { opacity: 0.25; }
+  50%      { opacity: 0.85; }
+}
+.auth-particles {
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%, rgba(45, 212, 191, 0.7), transparent 60%),
+    radial-gradient(1.5px 1.5px at 28% 72%, rgba(245, 158, 11, 0.6), transparent 60%),
+    radial-gradient(1px 1px at 45% 35%, rgba(255, 255, 255, 0.7), transparent 60%),
+    radial-gradient(1.5px 1.5px at 65% 60%, rgba(167, 139, 250, 0.6), transparent 60%),
+    radial-gradient(1px 1px at 78% 22%, rgba(255, 255, 255, 0.6), transparent 60%),
+    radial-gradient(1.5px 1.5px at 88% 80%, rgba(52, 211, 153, 0.6), transparent 60%),
+    radial-gradient(1px 1px at 32% 92%, rgba(255, 255, 255, 0.6), transparent 60%),
+    radial-gradient(1px 1px at 58% 8%, rgba(45, 212, 191, 0.6), transparent 60%);
+  animation: authTwinkle 6s ease-in-out infinite;
+}
+
+/* سکه‌های شناور در پنل برندینگ — چرخش محوری Y */
+@keyframes authCoinFloat {
+  0%, 100% { transform: translateY(0) rotateY(0deg) rotateX(8deg); }
+  50%      { transform: translateY(-14px) rotateY(180deg) rotateX(-4deg); }
+}
+.auth-coin {
+  animation: authCoinFloat 8s ease-in-out infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.auth-coin-slow { animation-duration: 11s; }
+.auth-coin-fast { animation-duration: 6.5s; }
+
+/* کارت 3D شیشه‌ای — پایه */
+.auth-card-3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(13, 148, 136, 0.25);
+  box-shadow:
+    0 25px 60px -15px rgba(13, 148, 136, 0.35),
+    0 10px 30px -10px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+}
+.dark .auth-card-3d {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 20, 23, 0.85) 0%,
+    rgba(13, 13, 15, 0.75) 100%
+  );
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  box-shadow:
+    0 25px 60px -15px rgba(0, 0, 0, 0.6),
+    0 10px 30px -10px rgba(45, 212, 191, 0.18),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+/* flip container: نگه‌دارنده‌ی دو روی کارت برای تعویض حالت کاربر↔سوپرادمین */
+.auth-flip {
+  transform-style: preserve-3d;
+  position: relative;
+}
+.auth-flip-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.auth-flip-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
+/* شفاف‌سازی سوزنیِ حالت فعال در toggle */
+.auth-mode-pill {
+  background: linear-gradient(135deg, #0d9488 0%, #10b981 50%, #14b8a6 100%);
+  box-shadow: 0 4px 14px -4px rgba(13, 148, 136, 0.6);
+}
+.dark .auth-mode-pill {
+  background: linear-gradient(135deg, #2dd4bf 0%, #34d399 50%, #5eead4 100%);
+  box-shadow: 0 4px 14px -4px rgba(45, 212, 191, 0.6);
+}
+.auth-mode-pill-admin {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #ec4899 100%);
+  box-shadow: 0 4px 14px -4px rgba(168, 85, 247, 0.6);
+}
+.dark .auth-mode-pill-admin {
+  background: linear-gradient(135deg, #a78bfa 0%, #c084fc 50%, #f472b6 100%);
+  box-shadow: 0 4px 14px -4px rgba(192, 132, 252, 0.6);
+}
+
+/* دکمه‌ی submit با گرادیان متحرک و glow */
+@keyframes authBtnShine {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.auth-submit {
+  background-image: linear-gradient(
+    120deg,
+    #0d9488 0%,
+    #10b981 35%,
+    #14b8a6 65%,
+    #0d9488 100%
+  );
+  background-size: 220% 220%;
+  animation: authBtnShine 6s ease-in-out infinite;
+  box-shadow: 0 8px 24px -8px rgba(13, 148, 136, 0.55);
+  transition: transform 0.15s ease, box-shadow 0.25s ease, filter 0.2s ease;
+}
+.auth-submit-admin {
+  background-image: linear-gradient(
+    120deg,
+    #8b5cf6 0%,
+    #a855f7 35%,
+    #ec4899 65%,
+    #8b5cf6 100%
+  );
+  box-shadow: 0 8px 24px -8px rgba(168, 85, 247, 0.55);
+}
+.auth-submit:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 14px 30px -8px rgba(13, 148, 136, 0.65);
+}
+.auth-submit-admin:hover {
+  box-shadow: 0 14px 30px -8px rgba(168, 85, 247, 0.65);
+}
+.auth-submit:active {
+  transform: translateY(0px) scale(0.99);
+}
+.dark .auth-submit {
+  background-image: linear-gradient(
+    120deg,
+    #2dd4bf 0%,
+    #34d399 35%,
+    #5eead4 65%,
+    #2dd4bf 100%
+  );
+  background-size: 220% 220%;
+  box-shadow: 0 8px 24px -8px rgba(45, 212, 191, 0.55);
+}
+.dark .auth-submit-admin {
+  background-image: linear-gradient(
+    120deg,
+    #a78bfa 0%,
+    #c084fc 35%,
+    #f472b6 65%,
+    #a78bfa 100%
+  );
+  box-shadow: 0 8px 24px -8px rgba(192, 132, 252, 0.55);
+}
+
+/* input focus glow ring — رنگ تیال برای focus */
+.auth-input:focus {
+  border-color: rgba(13, 148, 136, 0.6);
+  box-shadow:
+    0 0 0 3px rgba(13, 148, 136, 0.15),
+    0 0 16px -2px rgba(13, 148, 136, 0.25);
+}
+.dark .auth-input:focus {
+  border-color: rgba(45, 212, 191, 0.65);
+  box-shadow:
+    0 0 0 3px rgba(45, 212, 191, 0.18),
+    0 0 16px -2px rgba(45, 212, 191, 0.3);
+}
+
+/* متن گرادیان برند — تیال/زمردی/کهربایی */
+.auth-brand-text {
+  background: linear-gradient(135deg, #0d9488 0%, #10b981 40%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.dark .auth-brand-text {
+  background: linear-gradient(135deg, #2dd4bf 0%, #34d399 40%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* خط گرادیان براق متحرک زیر عنوان */
+@keyframes authUnderline {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+.auth-underline {
+  background: linear-gradient(90deg, transparent, #0d9488, #f59e0b, transparent);
+  background-size: 200% 100%;
+  animation: authUnderline 4s ease-in-out infinite;
+}
+.dark .auth-underline {
+  background: linear-gradient(90deg, transparent, #2dd4bf, #fbbf24, transparent);
+  background-size: 200% 100%;
+  animation: authUnderline 4s ease-in-out infinite;
+}
+
+/* پنل برندینگ — گرادیان عمیق بدون ایندیگو */
+.auth-brand-panel {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(13, 148, 136, 0.45) 0%, transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.32) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.25) 0%, transparent 70%),
+    linear-gradient(135deg, #042f2e 0%, #064e3b 50%, #0f172a 100%);
+}
+.dark .auth-brand-panel {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(45, 212, 191, 0.35) 0%, transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(251, 191, 36, 0.22) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.18) 0%, transparent 70%),
+    linear-gradient(135deg, #022c22 0%, #052e2b 50%, #020617 100%);
+}
+
+/* trust badge با hover ملایم */
+.auth-trust {
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+.auth-trust:hover {
+  transform: translateY(-1px);
+}
+
+/* shrink-FX utility: جلوگیری از scroll leak روی body هنگام باز بودن */
+.auth-locked {
+  overflow: hidden !important;
+}
+
+
+/* ============================================================
+ * Anti-Flash محتوای SEO (SeoHero) — ux/seo
+ * کلاس js-enabled توسط اسکریپت inline در <head> قبل از رندر body
+ * اضافه می‌شود. کاربران JS-دار هرگز «متن خام» سئو نمی‌بینند؛ محتوای
+ * سروری فقط برای کرالرهای بدون JS (fallback) قابل مشاهده است.
+ * ============================================================ */
+html.js-enabled [data-seo-gate] {
+  display: none !important;
+}
+
+/* حلقه پالس دکمه AI موبایل — فقط ۳ تکرار (FIX B20: قبلاً animate-ping بی‌نهایت بود و باتری/GPU موبایل را مصرف می‌کرد) */
+@keyframes ping-finite {
+  75%, 100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+.animate-ping-finite {
+  animation: ping-finite 1.4s cubic-bezier(0, 0, 0.2, 1) 3;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-ping-finite {
+    animation: none;
+  }
+}
+
+/* ============================================================
+ * Mobile Performance Mode (Task 21-C)
+ * گزارش مالک: «کم کردن انیمیشن‌ها در موبایل، افزایش سرعت، لگ کمتر»
+ * روی صفحه‌های ≤ 768px:
+ *  ۱) backdrop-filter (blur) → none — روی اندروید میان‌رده بسیار پرهزینهٔ GPU
+ *  ۲) clamp مدت transitionها به 0.15s (حس «آنی» بدون لغزش)
+ *  ۳) خاموشی انیمیشن‌های تزئینی بی‌نهایت (orb/coin/mesh/marquee/شیمرِ CTA...)
+ *     — اسپینر و پالس (نشانه‌های بارگذاری) و شیمرِ اسکلتون باقی می‌مانند
+ *  ۴) سایه‌های بزرگ تزئینی → سایه‌ی کوچک (رینگ فوکوس دست‌نخورده می‌ماند)
+ * ============================================================ */
+@media (max-width: 768px) {
+  /* ۱+۲) حذف blur و clamp ترنزیشن‌ها — سراسری و ایمن (focus-ring از
+     box-shadow استفاده می‌کند نه backdrop-filter، پس دست‌نخورده است) */
+  *,
+  *::before,
+  *::after {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    transition-duration: 0.15s !important;
+  }
+
+  /* ۳) انیمیشن‌های غیرضروری خاموش — لیست سفید: .animate-spin، .animate-pulse،
+     .animate-due-soon (نشانگر سررسید نزدیک) و شیمر اسکلتون (.skeleton) */
+  .animate-fade-in-up,
+  .animate-stagger,
+  .animate-scale-in,
+  .animate-scale-fade,
+  .animate-shake,
+  .animate-count-up,
+  .animate-check-pop,
+  .animate-slide-in-right,
+  .animate-slide-out-right,
+  .animate-pulse-glow,
+  .animate-glow-pulse,
+  .animate-ping-finite,
+  .animate-draw-path,
+  .module-enter,
+  .grid-pattern,
+  .orb-float,
+  .border-glow-animate,
+  .auth-orb,
+  .auth-coin,
+  .auth-mesh,
+  .auth-particles,
+  .auth-underline,
+  .auth-submit {
+    animation: none !important;
+  }
+
+  /* reveal-on-scroll در موبایل بی‌درنگ نمایان شود (بدون انتظار IntersectionObserver) */
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* marquee بجای توقف کامل، آهسته‌تر شود تا حس زنده بماند اما GPU سبک */
+  [class*="animate-[marquee"] {
+    animation-duration: 60s !important;
+  }
+
+  /* ۴) سایه‌های بزرگ تزئینی → سایه‌ی جمع‌وجور + پس‌زمینه‌ی شیشه‌ای کدرتر
+     (بدون blur، پس‌زمینه‌ی 70٪ ناخوانا می‌شد) */
+  .shadow-xl {
+    box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.18) !important;
+  }
+  .shadow-2xl {
+    box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.22) !important;
+  }
+  .auth-card-3d {
+    box-shadow:
+      0 10px 24px -12px rgba(13, 148, 136, 0.35),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.5) !important;
+    background: rgba(255, 255, 255, 0.95);
+  }
+  .dark .auth-card-3d {
+    box-shadow:
+      0 10px 24px -12px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05) !important;
+    background: rgba(17, 17, 20, 0.96);
+  }
+  .glass {
+    background: rgba(255, 255, 255, 0.92);
+  }
+  .dark .glass {
+    background: rgba(20, 20, 23, 0.94);
+  }
+
+  /* متن‌های بلند رسپانسیو — جلوگیری از overflow افقی ناخواسته */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* ============================================================
+ * Reduced-Motion (Task 21-C) — معادلِ دسکتاپیِ Mobile Performance Mode
+ * کاربرانی که prefers-reduced-motion فعال کرده‌اند همان رفتار سبک را
+ * می‌گیرند (حتی روی دسکتاپ): بدون blur، ترنزیشن ۰.۱۵s، انیمیشن‌های
+ * تزئینی خاموش — اسپینر/پالس/اسکلتون (نشانه‌های وضعیت) باقی می‌مانند.
+ * ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  /* توجه: animation-duration/iteration-count روی «*» اعمال نمی‌شود —
+     .animate-spin/.animate-pulse (نشانه‌های بارگذاری) باید بچرخند؛
+     duration جهانیِ ۰.۱۵s اسپینر را ۶.۶ دور/ثانیه می‌کرد (خطر فوتو-
+     سنسیتیویتی + ظاهر خراب). فقط ترنزیشن‌ها clamp می‌شوند. */
+  *,
+  *::before,
+  *::after {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    transition-duration: 0.15s !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* انیمیشن‌های تزئینی بی‌نهایت خاموش — لیست سفید مشابه موبایل */
+  .animate-fade-in-up,
+  .animate-stagger,
+  .animate-scale-in,
+  .animate-scale-fade,
+  .animate-shake,
+  .animate-count-up,
+  .animate-check-pop,
+  .animate-slide-in-right,
+  .animate-slide-out-right,
+  .animate-pulse-glow,
+  .animate-glow-pulse,
+  .animate-ping-finite,
+  .animate-draw-path,
+  .module-enter,
+  .grid-pattern,
+  .orb-float,
+  .border-glow-animate,
+  .auth-orb,
+  .auth-coin,
+  .auth-mesh,
+  .auth-particles,
+  .auth-underline,
+  .auth-submit {
+    animation: none !important;
+  }
+
+  /* دکمه‌های شیشه‌ای/شیمر CTA بدون blur خواناتر شوند */
+  .glass,
+  .auth-card-3d {
+    background: rgba(255, 255, 255, 0.96);
+  }
+  .dark .glass,
+  .dark .auth-card-3d {
+    background: rgba(17, 17, 20, 0.98);
+  }
+}
+
+/* HMR-force: v4 dialog centering */
